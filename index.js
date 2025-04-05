@@ -22,7 +22,7 @@ app.use(express.static("public/uploads"));
 
 app.use(
   cors({
-    origin: "https://employee-back-end.vercel.app",
+    origin: "https://fresh-mern-employee-front-end.vercel.app",
     credentials: true,
   })
 );
