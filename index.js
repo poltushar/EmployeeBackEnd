@@ -20,7 +20,12 @@ connectDatabase();
 const app = express();
 app.use(express.static("public/uploads"));
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://employee-back-end.vercel.app",
+    credentials: true,
+  })
+);
 app.use(express.json()); //to convert nodejs  file to json file
 
 //first
