@@ -5,8 +5,11 @@ import multer from "multer";
 import { Employee } from "../models/Employee.js";
 import User from "../models/User.js";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
-import { v2 as cloudinary } from "cloudinary";
+// import { v2 as cloudinary } from "cloudinary";
 import bcrypt from "bcrypt";
+
+import pkg from "cloudinary";
+const { v2: cloudinary } = pkg;
 
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {
