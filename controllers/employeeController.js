@@ -4,22 +4,40 @@
 import multer from "multer";
 import { Employee } from "../models/Employee.js";
 import User from "../models/User.js";
-
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import bcrypt from "bcrypt";
-import path from "path";
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/uploads");
-  },
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "public/uploads");
+//   },
 
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + path.extname(file.originalname));
+//   },
+// });
+
+// //to check where is a put on the images
+
+// export const upload = multer({ storage: storage });
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_kEY,
+  api_secret: process.env.CLOUDINARY_API_Secret,
+
+  secure: true,
 });
 
-//to check where is a put on the images
-
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "uploads",
+    format: async (req, file) => "png" || "jpg",
+    public_id: (req, file) => file.originalname.split(".")[0] + "",
+  },
+});
 export const upload = multer({ storage: storage });
 
 export const addEmployee = async (req, res) => {
