@@ -76,7 +76,8 @@ export const addEmployee = async (req, res) => {
       email,
       password: hashpassword,
       role,
-      profileImage: req.file ? req.file.filename : "",
+
+      profileImage: req.file ? req.file?.path : null,
     });
 
     const savedUser = await newUSer.save();
