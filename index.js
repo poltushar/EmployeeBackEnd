@@ -20,6 +20,8 @@ connectDatabase();
 const app = express();
 app.use(express.static("public/uploads"));
 
+//https://fresh-mern-employee-front-end.vercel.app
+
 app.use(
   cors({
     origin: "https://fresh-mern-employee-front-end.vercel.app",

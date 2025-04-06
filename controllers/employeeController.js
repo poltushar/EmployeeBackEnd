@@ -63,6 +63,8 @@ export const addEmployee = async (req, res) => {
 
     const user = await User.findOne({ email });
 
+    console.log(req.file);
+
     if (user) {
       return res
         .status(400)
@@ -76,8 +78,7 @@ export const addEmployee = async (req, res) => {
       email,
       password: hashpassword,
       role,
-
-      profileImage: req.file ? req.file?.path : null,
+      profileImage: req.file ? req.file.path : "",
     });
 
     const savedUser = await newUSer.save();
