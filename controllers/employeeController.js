@@ -8,8 +8,8 @@ import { CloudinaryStorage } from "multer-storage-cloudinary";
 // import { v2 as cloudinary } from "cloudinary";
 import bcrypt from "bcrypt";
 
-import pkg from "cloudinary";
-const { v2: cloudinary } = pkg;
+import cloudinaryPkg from "cloudinary";
+const { v2: cloudinary } = cloudinaryPkg;
 
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {
